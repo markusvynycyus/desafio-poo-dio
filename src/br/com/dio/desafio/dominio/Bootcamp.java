@@ -1,7 +1,7 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -9,11 +9,19 @@ import java.util.Set;
 public class Bootcamp {
     private String nome;
     private String descricao;
-    private final LocalDate dataInicial = LocalDate.now();
-    private final LocalDate dataFinal = dataInicial.plusDays(45);
-    private Set<Dev> devsInscritos = new HashSet<>();
-    private Set<Conteudo> conteudos = new LinkedHashSet<>();
+    private final LocalDate dataInicial;
+    private final LocalDate dataFinal;
+    private Set<Dev> devsInscritos;
+    private Set<Conteudo> conteudos;
 
+    public Bootcamp() {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.dataInicial = LocalDate.now();
+        this.dataFinal = this.dataInicial.plusDays(45);
+        this.devsInscritos = new LinkedHashSet<>();
+        this.conteudos = new LinkedHashSet<>();
+    }
 
     public String getNome() {
         return nome;
@@ -40,19 +48,19 @@ public class Bootcamp {
     }
 
     public Set<Dev> getDevsInscritos() {
-        return devsInscritos;
+        return Collections.unmodifiableSet(devsInscritos);
     }
 
-    public void setDevsInscritos(Set<Dev> devsInscritos) {
-        this.devsInscritos = devsInscritos;
+    public void inscreverDev(Dev dev) {
+        this.devsInscritos.add(dev);
     }
 
     public Set<Conteudo> getConteudos() {
-        return conteudos;
+        return Collections.unmodifiableSet(conteudos);
     }
 
-    public void setConteudos(Set<Conteudo> conteudos) {
-        this.conteudos = conteudos;
+    public void adicionarConteudo(Conteudo conteudo) {
+        this.conteudos.add(conteudo);
     }
 
     @Override
@@ -60,7 +68,12 @@ public class Bootcamp {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devsInscritos, bootcamp.devsInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
+        return Objects.equals(nome, bootcamp.nome) &&
+                Objects.equals(descricao, bootcamp.descricao) &&
+                Objects.equals(dataInicial, bootcamp.dataInicial) &&
+                Objects.equals(dataFinal, bootcamp.dataFinal) &&
+                Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
+                Objects.equals(conteudos, bootcamp.conteudos);
     }
 
     @Override
