@@ -1,152 +1,117 @@
-<h1> Desafio: Aprenda na Prática Programação Orientada a Objetos</h1>
+## README
 
-<p align="center"> 📜 <a href="https://academiapme-my.sharepoint.com/:p:/g/personal/camila_cavalcante_dio_me/EaXyYOjBaFpZjkxhexMo5EcBKMEEAI5t5aHlsTjnBQJlUw?e=nxdB6C"> SLIDES APRESENTADO NO PROJETO </a> 📜 </P>
-<p> Sejam bem-vindos ao desafio: <strong>APRENDENDO NA PRÁTICA O PARADIGMA DE ORIENTAÇÃO A OBJETOS.</strong><br>Desafio este que tive a honra de co-criar com a plataforma de cursos online <strong><a href="https://web.digitalinnovation.one/">DIGITAL INNOVATION ONE</a></strong> 💛🧡 e disponibilizado de forma gratuita para a comunidade dos desenvolvedores Java.<br>
-    💎 O objetivo principal é colocar em prática umas das principais ferramentas da OO: <strong>ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO,</strong> através de um projeto Java. </p>
+### Desafio de Programação Orientada a Objetos (POO) em Java
 
+Este projeto foi desenvolvido como parte de um desafio para praticar os conceitos fundamentais de Programação Orientada a Objetos (POO) utilizando a linguagem Java. O objetivo principal foi aplicar os pilares da POO - Abstração, Encapsulamento, Herança e Polimorfismo - de maneira prática e eficiente.
 
+### Estrutura do Projeto
 
-<h2>🛑 Pré-Requisitos</h2>
+O projeto consiste em várias classes que modelam entidades e conceitos relacionados a um bootcamp de desenvolvimento. A seguir, são apresentadas as principais classes desenvolvidas:
 
-<p>
-✅ Conhecer a sintaxe da Java<br>
-✅ Java JDK 11<br>
-✅ IDE para desenvolvimento Java (usarei IntelliJ)<br>
-✅ Git<br>
-✅ Conta no GitHub<br>
-</p>
+1. **Bootcamp**
+   - Representa um bootcamp de desenvolvimento.
+   - Contém atributos como nome, descrição, datas de início e fim, e coleções de desenvolvedores inscritos e conteúdos associados.
+   - Implementa métodos para gerenciar inscrições de desenvolvedores e adicionar conteúdos ao bootcamp.
 
+2. **Conteudo**
+   - Classe abstrata que define a estrutura básica para diferentes tipos de conteúdos.
+   - Define métodos abstratos para calcular a experiência (XP) associada a cada tipo de conteúdo.
+   - Possui atributos como título e descrição, com métodos para acesso e modificação desses atributos.
 
-<h2> 👣 Passo-a-Passo</h2>
+3. **Curso**
+   - Subclasse de `Conteudo` que representa um curso específico dentro do bootcamp.
+   - Inclui um atributo adicional `cargaHoraria` que influencia no cálculo da experiência (XP) do curso.
+   - Implementa o método `calcularXp()` para calcular a XP com base na carga horária do curso.
 
-<p>
-<strong>	1.</strong> Vamos ABSTRAIR o DOMÍNIO Bootcamp e MODELAR seus ATRIBUTOS E MÉTODOS <br>
-<strong>	2.</strong> Criaremos as CLASSES: Bootcamp, Cursos, Mentorias e Devs e vamos relaciona-las <br>
-<strong>	3.</strong> As CLASSES Curso, Mentoria e Devs também serão MODELADOS, ou seja, criaremos seus ATRIBUTOS E MÉTODOS <br> 
-<strong>	4.</strong> Para que o código fique mais legível e de fácil manutenção, iremos utilizar de algumas das ferramentas que o PARADIGMA DE ORIENTAÇÃO A OBJETOS (POO) nos oferece: ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO <br>
-<strong>	5.</strong> E para representar CLASSES que foram criadas e relacionadas, iremos transforma-las em OBJETOS<br>
-</p>
+4. **Mentoria**
+   - Subclasse de `Conteudo` que representa uma sessão de mentoria dentro do bootcamp.
+   - Inclui um atributo `data` para armazenar a data da mentoria.
+   - Implementa o método `calcularXp()` para retornar uma XP fixa associada à participação em uma mentoria.
 
-----
+5. **Dev**
+   - Representa um desenvolvedor participante do bootcamp.
+   - Mantém coleções de conteúdos nos quais o desenvolvedor está inscrito e conteúdos que foram concluídos.
+   - Implementa métodos para inscrever o desenvolvedor em um bootcamp, progredir nos conteúdos inscritos e calcular a XP total obtida.
 
-<h2> 📚 Paradigma de Programação Orientado a Objetos (POO) </h2>
+### Melhorias Implementadas
 
-<p>
-A visão de Orientação a Objetos (OO) é aquela de um mundo de objetos que interagem.<br>
-Este paradigma é um modelo de análise, projeto e programação baseado na aproximação entre o mundo real e o mundo virtual, através da criação e interação entre classes, atributos, métodos, objetos, entre outros.<br>
-São 4 os pilares principais do POO: ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO. 
-</p>
+Durante o desenvolvimento, foram implementadas melhorias significativas nas classes existentes:
 
+- **Encapsulamento:** Atributos foram protegidos adequadamente com modificadores de acesso privado e métodos públicos para acesso controlado.
+  
+- **Abstração:** Utilização de classes abstratas (`Conteudo`) para definir a estrutura base e métodos abstratos para comportamentos específicos que são implementados pelas subclasses (`Curso`, `Mentoria`).
 
-<h3>🔺 ABSTRAÇÃO:</h3>
+- **Herança:** Utilização de herança para especializar classes (`Curso` e `Mentoria`) que compartilham características e comportamentos da classe base (`Conteudo`).
 
-<p>
-Habilidade de concentrar-se nos aspectos essenciais de um domínio, ignorando características menos importantes ou acidentais. Nesse contexto, objetos são abstrações de entidades existentes no domínio em questão.</p>
+- **Polimorfismo:** Capacidade de tratar objetos de classes diferentes de maneira uniforme através de métodos polimórficos como `calcularXp()`.
 
-<h3>🔺 ENCAPSULAMENTO:</h3>
+### Exemplo de Uso (Main.java)
 
-<p> Encapsular significa esconder a implementação dos objetos. O encapsulamento favorece principalmente dois aspectos de um sistema: a manutenção e a evolução.</p>
+Para demonstrar o funcionamento das classes desenvolvidas, foi criada uma classe `Main` que exemplifica a utilização dos conceitos implementados:
 
-<h3>🔺 HERANÇA:</h3>
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Criação de cursos e mentoria
+        Curso curso1 = new Curso();
+        curso1.setTitulo("Curso Java");
+        curso1.setDescricao("Descrição do Curso Java");
+        curso1.setCargaHoraria(8);
 
-<p>Permite que você defina uma classe filha que reutiliza (herda), estende ou modifica o comportamento de uma classe pai. A classe cujos membros são herdados é chamada de classe base. A classe que herda os membros da classe base é chamada de classe derivada.</p>
+        Mentoria mentoria = new Mentoria();
+        mentoria.setTitulo("Mentoria de Java");
+        mentoria.setDescricao("Descrição da Mentoria de Java");
+        mentoria.setData(LocalDate.now());
 
-<h3> 🔺 POLIMORFISMO:</h3>
+        // Criação de um bootcamp
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição do Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(mentoria);
 
-<p>Capacidade de um objeto poder ser referenciado de várias formas. Cuidado, polimorfismo não quer dizer que o objeto fica se transformando, muito pelo contrário, um objeto nasce de um tipo e morre daquele tipo, o que pode mudar é a maneira como nos referimos a ele. A capacidade de tratar objetos criados a partir das classes específicas como objetos de uma classe genérica é chamada de polimorfismo.</p>
-<br>
-<h2 align="center"> ‼️ CONCEITOS FUNDAMENTAIS POO ‼️ </h2>
-<p>
-<h3>🔻 DOMÍNIO:</h3> 
-Domínio da aplicação, também conhecida como camada de negócio ou de objetos de negócio, é aquela onde estão localizadas as classes que fazem parte do domínio do problema, ou seja, classes correspondentes a objetos que fazem parte da descrição do problema.
+        // Criação de desenvolvedores e interações
+        Dev devCamila = new Dev();
+        devCamila.setNome("Camila");
+        devCamila.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
+        devCamila.progredir();
+        devCamila.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
+        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
+        System.out.println("XP:" + devCamila.calcularTotalXp());
 
-<h3>🔻 CLASSE: </h3> 
-Um elemento do código que tem a função de representar objetos do mundo real. Dentro dela é comum declararmos atributos e métodos, que representam, respectivamente, as características e comportamentos desse objeto.
+        System.out.println("-------");
 
-<h3>🔻 ATRIBUTO: </h3>
-Atributos são, basicamente, a estrutura de dados que vai representar a classe. Os atributos também são conhecidos como VARIÁVEL DE CLASSE, e podem ser divididos em dois tipos básicos: atributos de instância e de classe. 
+        Dev devJoao = new Dev();
+        devJoao.setNome("João");
+        devJoao.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        devJoao.progredir();
+        devJoao.progredir();
+        devJoao.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        System.out.println("Conteúdos Concluídos João:" + devJoao.getConteudosConcluidos());
+        System.out.println("XP:" + devJoao.calcularTotalXp());
+    }
+}
+```
 
-<h3>🔻 VARIÁVEL: </h3>
-Uma “região de memória (do computador) previamente identificada cuja finalidade é armazenar os dados ou informações de um programa por um determinado espaço de tempo”.
+### Como Executar
 
-<h3>🔻 MÉTODO: </h3>
-Os métodos representam os estados e ações dos objetos e classes.
+Para executar o código fornecido, siga os passos abaixo:
 
-<h3>🔻 OBJETO: </h3>
-Em POO, objeto é um "molde" de uma determinada classe, que passa a existir a partir de uma instância da classe. A classe define o comportamento do objeto, usando atributos (propriedades) e métodos (ações).
-Objeto em ciência da computação, é uma referência a um local da memória que possui um valor. Um objeto pode ser uma variável, função, ou estrutura de dados. 
+1. Clone o repositório em sua máquina local.
+2. Abra o projeto em seu ambiente de desenvolvimento preferido (como IntelliJ IDEA, Eclipse, etc.).
+3. Certifique-se de que o JDK (Java Development Kit) esteja configurado corretamente em seu ambiente.
+4. Execute a classe `Main.java` para visualizar a saída no console.
 
-<h3>🔻 INSTÂNCIA: </h3>
-Uma instância de uma classe é um novo objeto criado dessa classe, com o operador new. Instanciar uma classe é criar um novo objeto do mesmo tipo dessa classe. Uma classe somente poderá ser utilizada após ser instanciada.
+### Conclusão
 
-</p>
-    
-------------
-<br>
+Este projeto não só demonstra a aplicação prática dos conceitos fundamentais da Programação Orientada a Objetos em Java, mas também ilustra a importância de um bom design orientado a objetos para a criação de sistemas flexíveis, escaláveis e fáceis de manter. As melhorias implementadas garantem um código mais coeso, modular e adaptável a futuras evoluções e requisitos do projeto.
 
-<h2> 🧮 Linguagem de Programação vs Paradigma de Linguagem de Programação</h2>
+---
 
-<p>
-<h3> ✨ LINGUAGEM DE PROGRAMAÇÃO:</h3> 
-É uma linguagem formal que, através de uma série de instruções, permite que um programador escreva um conjunto de ordens, ações consecutivas, dados e algoritmos para criar programas que controlam o comportamento físico e lógico de uma máquina.<br>
-Seguem alguns exemplos de como as linguagens de programação podem ser classificadas:<br>
-<br>
-🔺 Nível de abstração:<br>
-Baixo Nível: Assembly<br>
-Médio Nível: C, C++, D, Objective C, etc.<br>
-Alto Nível: Java, C#, PHP, Javascript, etc.<br>
-Altíssimo Nível: Python, Ruby, Elixir, etc.<br>
-<br>
-🔺 Paradigma de programação:<br>
-Programação Estruturada: C, Pascal, Ada, etc.<br>
-Programação Orientada a Objetos: Java, C#, C++, Objective C, D, etc.<br>
-Programação Funcional: Lisp, Scheme, Erlang, Elixir, etc.<br>
-<br>
-🔺 Linguagens classificadas pela arquitetura da aplicação:<br>
-Desktop: C, C++, Object Pascal, Java, etc.<br>
-Web: PHP, Ruby, Javascript, Java, etc.<br>
-<br>
-🔺 Tipo de execução:<br>
-Linguagens compiladas: C, C++, Pascal, D, GO, etc.<br>
-Linguagens Interpretadas: Python, Ruby, PHP, Javascript, etc.<br>
-Linguagens Hibridas: Java, Erlang, Elixir, etc.<br>
-
-
-<h3> ✨ PARADIGMA DE LINGUAGEM DE PROGRAMAÇÃO</h3> 
-
-É um conjunto de características que podem ser utilizados para categorizar determinado grupo de linguagens. Um paradigma pode oferecer técnicas apropriadas para uma aplicação específica.<br>
-<br>
-<strong>PARADIGMAS PRINCIPAIS e SEUS SUBPARADIGMAS</strong><br>
-
-🔸 <strong>1. Paradigma Imperativo</strong><br>
-Neste paradigma, o programa descreve o processamento necessário para solucionar o problema. Assim, o paradigma imperativo é caracterizado por execução sequencial de instruções, pelo uso de variáveis que representam posições de memória e pelo uso de instruções de atribuição que alteram os valores dessas variáveis.<br>
-Vejamos alguns Subparadigmas do Paradigma Imperativo e exemplos linguagens de programação que adotam esses subparadigmas.<br>
-<br>
-🔸  1.1 Paradigma estruturado:  ALGOL 58 e ALGOL 60 <br>
-🔸  1.2 Paradigma concorrente: Java e Ada<br>
-🔸  1.3 Paradigma Orientado a Objetos: Smalltalk e Java<br>
-<br>
-🔹 <strong>2. Paradigma Declarativo</strong><br>
-Este paradigma é o modelo no qual os resultados são descritos, mas os passos para chegar aos resultados não são estabelecidos.<br>
-Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de programação que adotam esses subparadigmas:<br>
-<br>
-🔹 2.1 Paradigma Funcional: Lisp e Haskell<br>
-🔹 2.2 Paradigma Lógico: Prolog<br>
-</p>
-
-<h2> 🤝 Contribuindo </h2>
-
-<p>
-Este repositório foi criado para fins de estudo, então contribua com ele.<br>
-Se te ajudei de alguma forma, ficarei feliz em saber. E caso você conheça alguém que se identidique com o conteúdo, não deixe de compatilhar.<br>
-<br>
-Se possível:<br>
-⭐️  Star o projeto<br>
-🐛 Encontrar e relatar issues<br>
-</p>
-
-
-
-------------
-
-Disponibilizado com ♥ por [cami-la](https://www.linkedin.com/in/cami-la/ "cami-la").
+Esse README resume as principais informações sobre o projeto desenvolvido, destacando as melhorias implementadas e fornecendo instruções básicas para execução e compreensão do código.
